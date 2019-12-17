@@ -7,27 +7,60 @@ import Detail from './view/Detail';
 import Other from './view/Other';
 import HomeScreen from './view/Home/Home';
 import Test from './view/Home/Text';
-console.log('123');
+import Iconmoney from './assets/iconfont/Iconmoney';
+import IconallMoneyGrey from './assets/iconfont/IconallMoneyGrey';
+import ChargeAccount from './view/Home/ChargeAccount';
+
 const homeNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
   },
+  ChargeAccount: {
+    screen: ChargeAccount,
+  },
   Test: Test,
 });
+homeNavigator.navigationOptions = ({navigation}) => {
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+  return {
+    tabBarVisible,
+  };
+};
+const AppNavigator = createBottomTabNavigator(
+  {
+    Home: {
+      screen: homeNavigator,
 
-const AppNavigator = createBottomTabNavigator({
-  Home: {
-    screen: homeNavigator,
+      navigationOptions: {
+        tabBarIcon: ({focused}) => {
+          console.log('focused', focused);
+          if (focused) {
+            return <Iconmoney size={38}></Iconmoney>;
+          } else {
+            return <IconallMoneyGrey size={38}></IconallMoneyGrey>;
+          }
+        },
+      },
+    },
+    Detail: {
+      screen: Detail,
+    },
+    Other: Other,
   },
-  Detail: {
-    screen: Detail,
+  {
+    tabBarOptions: {
+      showIcon: true,
+    },
   },
-  Other: Other,
-});
+);
 const App = createAppContainer(AppNavigator);
 const styles = StyleSheet.create({
   bigBlue: {
-    paddingTop: 40,
+    flex: 1,
+    // backgroundColor: `rgb(58,149,254)`,
   },
   red: {
     color: 'red',
@@ -37,7 +70,7 @@ const styles = StyleSheet.create({
 class AppContainer extends React.Component {
   render() {
     return (
-      <View>
+      <View style={[styles.bigBlue]}>
         <App></App>
       </View>
     );

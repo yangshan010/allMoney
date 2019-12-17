@@ -6,7 +6,7 @@ class Test extends React.Component {
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>TEx1t</Text>
+        <Text>TEx1t1</Text>
       </View>
     );
   }
