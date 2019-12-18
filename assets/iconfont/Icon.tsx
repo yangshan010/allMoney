@@ -18,17 +18,20 @@ import Iconqiandai from './Iconqiandai';
 import Iconassets from './Iconassets';
 import IconAbc from './IconAbc';
 import IconyinhangZhongguofazhan from './IconyinhangZhongguofazhan';
+import Iconjiantou from './Iconjiantou';
 import Iconyinhangdaikuan from './Iconyinhangdaikuan';
 import Icontriangle from './Icontriangle';
 import IconiconTest from './IconiconTest';
 import Iconjinrongxianxingge from './Iconjinrongxianxingge';
 import Iconjijin1 from './Iconjijin1';
+import Iconrili from './Iconrili';
 import Iconyinhangqia from './Iconyinhangqia';
 import Icongupiao1 from './Icongupiao1';
 import Iconqianbao from './Iconqianbao';
 import Iconguangfayinhang from './Iconguangfayinhang';
 import Iconx from './Iconx';
 import Iconmayicaifu from './Iconmayicaifu';
+import Icongou from './Icongou';
 import Iconbi1 from './Iconbi1';
 import Iconyinhangqiahao from './Iconyinhangqiahao';
 import Iconyinhangqia1 from './Iconyinhangqia1';
@@ -65,7 +68,7 @@ import IconsoloIconIsnotvisible from './IconsoloIconIsnotvisible';
 import Iconyinhangduizhangdan from './Iconyinhangduizhangdan';
 import IconallMoneyGrey from './IconallMoneyGrey';
 
-export type IconNames = 'gupiao' | 'wode' | 'zhangshangcaifuyemianshoujiban245' | '38' | 'shaixuan' | 'jijin' | 'zhangdan' | 'jiebei' | 'bi' | 'baobiao' | 'qiandai' | 'assets' | 'ABC' | 'yinhang-zhongguofazhan-' | 'yinhangdaikuan' | 'triangle' | 'icon-test' | 'jinrongxianxingge-' | 'jijin1' | 'yinhangqia' | 'gupiao1' | 'qianbao' | 'guangfayinhang' | 'x' | 'mayicaifu' | 'bi1' | 'yinhangqiahao' | 'yinhangqia1' | 'weixin' | 'yinhangqia2' | 'money' | 'jiezhidan' | 'yinhangqiahuankuan' | 'pinganyinhang' | 'jiansheyinhang' | 'zhaoshangyinhang' | 'jiedai' | 'jiaotongyinhang' | 'daikuan' | 'zhifubao' | 'triangle1' | 'yinhang-zhongguoyinhang' | 'yinhang-guangda' | 'yinhang-gongshang' | 'yinhang-huaxia' | 'yinhang-pufa' | 'yinhang-zhada' | 'yinhang-shanghai' | 'yinhang-nanjing' | 'yinhang-zheshang' | 'yinhang-youzhengchuxu' | 'gouduijilu' | 'xinbaniconshangchuan-' | 'yinhang-pingan' | 'baoxiaochaxun' | 'zhongxinyinhang' | 'My_icon_isvisible' | 'solo_icon_isnotvisible' | 'yinhangduizhangdan' | 'allMoneyGrey';
+export type IconNames = 'gupiao' | 'wode' | 'zhangshangcaifuyemianshoujiban245' | '38' | 'shaixuan' | 'jijin' | 'zhangdan' | 'jiebei' | 'bi' | 'baobiao' | 'qiandai' | 'assets' | 'ABC' | 'yinhang-zhongguofazhan-' | 'jiantou' | 'yinhangdaikuan' | 'triangle' | 'icon-test' | 'jinrongxianxingge-' | 'jijin1' | 'rili' | 'yinhangqia' | 'gupiao1' | 'qianbao' | 'guangfayinhang' | 'x' | 'mayicaifu' | 'gou' | 'bi1' | 'yinhangqiahao' | 'yinhangqia1' | 'weixin' | 'yinhangqia2' | 'money' | 'jiezhidan' | 'yinhangqiahuankuan' | 'pinganyinhang' | 'jiansheyinhang' | 'zhaoshangyinhang' | 'jiedai' | 'jiaotongyinhang' | 'daikuan' | 'zhifubao' | 'triangle1' | 'yinhang-zhongguoyinhang' | 'yinhang-guangda' | 'yinhang-gongshang' | 'yinhang-huaxia' | 'yinhang-pufa' | 'yinhang-zhada' | 'yinhang-shanghai' | 'yinhang-nanjing' | 'yinhang-zheshang' | 'yinhang-youzhengchuxu' | 'gouduijilu' | 'xinbaniconshangchuan-' | 'yinhang-pingan' | 'baoxiaochaxun' | 'zhongxinyinhang' | 'My_icon_isvisible' | 'solo_icon_isnotvisible' | 'yinhangduizhangdan' | 'allMoneyGrey';
 
 interface Props extends GProps, ViewProps {
   name: IconNames;
@@ -106,6 +109,8 @@ export const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) =
       return <IconAbc size={size} color={color} {...rest} />;
     case 'yinhang-zhongguofazhan-':
       return <IconyinhangZhongguofazhan size={size} color={color} {...rest} />;
+    case 'jiantou':
+      return <Iconjiantou size={size} color={color} {...rest} />;
     case 'yinhangdaikuan':
       return <Iconyinhangdaikuan size={size} color={color} {...rest} />;
     case 'triangle':
@@ -116,6 +121,8 @@ export const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) =
       return <Iconjinrongxianxingge size={size} color={color} {...rest} />;
     case 'jijin1':
       return <Iconjijin1 size={size} color={color} {...rest} />;
+    case 'rili':
+      return <Iconrili size={size} color={color} {...rest} />;
     case 'yinhangqia':
       return <Iconyinhangqia size={size} color={color} {...rest} />;
     case 'gupiao1':
@@ -128,6 +135,8 @@ export const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) =
       return <Iconx size={size} color={color} {...rest} />;
     case 'mayicaifu':
       return <Iconmayicaifu size={size} color={color} {...rest} />;
+    case 'gou':
+      return <Icongou size={size} color={color} {...rest} />;
     case 'bi1':
       return <Iconbi1 size={size} color={color} {...rest} />;
     case 'yinhangqiahao':
