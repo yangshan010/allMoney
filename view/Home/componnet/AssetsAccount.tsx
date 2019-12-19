@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Icontriangle1 from '../../../assets/iconfont/Icontriangle1';
 import Icontriangle from '../../../assets/iconfont/Icontriangle';
-import IconJiansheyinhang from '../../../assets/iconfont/Iconjiansheyinhang';
+import IconJiansheyinhang from '../../../assets/iconfont/Iconjianshe';
 import {
   View,
   Text,

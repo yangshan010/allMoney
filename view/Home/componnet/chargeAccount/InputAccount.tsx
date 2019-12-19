@@ -6,7 +6,7 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
-import Iconjiansheyinhang from '../../../../assets/iconfont/Iconjiansheyinhang';
+import Iconjiansheyinhang from '../../../../assets/iconfont/Iconjianshe';
 class InputAccount extends React.Component {
   state = {};
 

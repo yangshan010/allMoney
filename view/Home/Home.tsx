@@ -90,6 +90,7 @@ class HomeScreen extends React.Component {
   iconClick = () => {
     console.log(1);
   };
+
   render() {
     return (
       // <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
@@ -156,7 +157,9 @@ class HomeScreen extends React.Component {
               记一笔
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.addAccount]}>
+          <TouchableOpacity
+            style={[styles.addAccount]}
+            onPress={() => this.props.navigation.navigate('AddAssets')}>
             <Text style={[styles.addAccountText]}>添加资产</Text>
           </TouchableOpacity>
         </LinearGradient>
@@ -223,12 +226,10 @@ const styles = StyleSheet.create({
   },
   budget: {
     flex: 1,
-    // height: 100,
+
     flexDirection: 'row',
   },
   income: {
-    // width: '50%',
-    // height: 100,
     flex: 1,
     flexDirection: 'row',
   },

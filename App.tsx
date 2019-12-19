@@ -3,14 +3,16 @@ import {View, Text, Button, StyleSheet} from 'react-native';
 import {createAppContainer, SafeAreaView} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import Detail from './view/Detail';
-import Other from './view/Other';
+
 import HomeScreen from './view/Home/Home';
-import Test from './view/Home/Text';
+
 import Iconmoney from './assets/iconfont/Iconmoney';
 import IconallMoneyGrey from './assets/iconfont/IconallMoneyGrey';
 import ChargeAccount from './view/Home/ChargeAccount';
-
+import AddAssets from './view/Home/AddAssets';
+import CreateCommonAccount from './view/Home/CreateCommonAccount';
+import BlankList from './view/Home/BlankList';
+import CreateBlankAccount from './view/Home/CreateBlankAccount';
 const homeNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
@@ -18,7 +20,18 @@ const homeNavigator = createStackNavigator({
   ChargeAccount: {
     screen: ChargeAccount,
   },
-  Test: Test,
+  AddAssets: {
+    screen: AddAssets,
+  },
+  CreateCommonAccount: {
+    screen: CreateCommonAccount,
+  },
+  BlankList: {
+    screen: BlankList,
+  },
+  CreateBlankAccount: {
+    screen: CreateBlankAccount,
+  },
 });
 homeNavigator.navigationOptions = ({navigation}) => {
   let tabBarVisible = true;
@@ -46,10 +59,6 @@ const AppNavigator = createBottomTabNavigator(
         },
       },
     },
-    Detail: {
-      screen: Detail,
-    },
-    Other: Other,
   },
   {
     tabBarOptions: {
