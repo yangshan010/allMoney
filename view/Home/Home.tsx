@@ -14,6 +14,7 @@ import AssetsAccount from './componnet/AssetsAccount';
 import {getScreenWidth, countFormat} from '../../utils/common.js';
 import Icongouduijilu from '../../assets/iconfont/Icongouduijilu';
 import LinearGradient from 'react-native-linear-gradient';
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: '',
@@ -25,6 +26,7 @@ class HomeScreen extends React.Component {
     move: 0,
     screenWidth: getScreenWidth(),
     headerStep: 0,
+    sheetAnim: new Animated.Value(0),
   };
   startLocationX = 0;
 
@@ -41,14 +43,26 @@ class HomeScreen extends React.Component {
       // console.log('开始====》', evt.nativeEvent, gestureState.x0);
       this.startLocationX = evt.nativeEvent.locationX;
     },
-    onPanResponderMove: (evt, gestureState) => {
+    onPanResponderMove: (evt, gs) => {
       // 最近一次的移动距离为gestureState.move{X,Y}
       // 从成为响应者开始时的累计手势移动距离为gestureState.d{x,y}
       // console.log('移动', evt.nativeEvent.locationX, gestureState);
       const moveValue = evt.nativeEvent.locationX - this.startLocationX;
-      this.setState({
-        move: this.state.move + moveValue,
-      });
+      // this.setState({
+      //   move: gs.dx,
+      // });
+      console.log(this.state.sheetAnim._value);
+      // if (this.state.sheetAnim._value < 0) {
+      //   Animated.timing(this.state.sheetAnim, {
+      //     toValue: moveValue,
+      //     duration: 0,
+      //   }).start();
+      // } else {
+      Animated.timing(this.state.sheetAnim, {
+        toValue: this.state.sheetAnim._value + moveValue,
+        duration: 0,
+      }).start();
+      // }
     },
     onPanResponderTerminationRequest: (evt, gestureState) => true,
     onPanResponderRelease: (evt, gestureState) => {
@@ -70,9 +84,12 @@ class HomeScreen extends React.Component {
         move = distance > 80 ? 0 : -screenWidth;
         headerStep = distance > 80 ? 0 : 1;
       }
-
+      Animated.timing(this.state.sheetAnim, {
+        toValue: move,
+        duration: 250,
+      }).start();
       this.setState({
-        move,
+        // move,
         headerStep,
       });
     },
@@ -92,6 +109,7 @@ class HomeScreen extends React.Component {
   };
 
   render() {
+    const {headerStep} = this.state;
     return (
       // <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View>
@@ -99,7 +117,7 @@ class HomeScreen extends React.Component {
         <View
           style={[styles.header, styles.border]}
           {...this._panResponder.panHandlers}>
-          <View style={(styles.content, {left: this.state.move})}>
+          <Animated.View style={(styles.content, {left: this.state.sheetAnim})}>
             <View style={[styles.first]}>
               <Text style={[styles.grey, styles.title]}>本月支出(元)</Text>
               <Text style={[styles.grey, styles.font28]}>
@@ -138,6 +156,18 @@ class HomeScreen extends React.Component {
                 </View>
               </View>
             </View>
+          </Animated.View>
+          <View style={[styles.dotContent]}>
+            <View
+              style={[
+                styles.dotItem,
+                headerStep === 0 ? styles.dotSelected : {},
+              ]}></View>
+            <View
+              style={[
+                styles.dotItem,
+                headerStep === 1 ? styles.dotSelected : {},
+              ]}></View>
           </View>
         </View>
         {/* 中间记一笔 */}
@@ -190,7 +220,7 @@ const styles = StyleSheet.create({
     height: 120,
   },
   header: {
-    height: 120,
+    height: 140,
     backgroundColor: 'rgb(58,149,254)',
     position: 'relative',
   },
@@ -258,6 +288,26 @@ const styles = StyleSheet.create({
   addAccountText: {
     fontSize: 12,
     color: '#fff',
+  },
+  dotContent: {
+    position: 'absolute',
+    bottom: 12,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    // textAlign:'center'
+  },
+  dotItem: {
+    height: 5,
+    width: 5,
+    borderRadius: 6,
+    backgroundColor: '#fff',
+    marginRight: 6,
+    opacity: 0.4,
+  },
+  dotSelected: {
+    opacity: 1,
   },
 });
 export default HomeScreen;
