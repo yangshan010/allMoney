@@ -4,6 +4,7 @@ import {View, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 import {commonColor} from '../../../../style/common.js';
 import IconZheshang from '../../../../assets/iconfont/IconyinhangZheshang';
 console.log('commonColor', commonColor);
+import Swiper from '../../../../components/Swiper';
 export default class SelectCategory extends Component {
   render() {
     return (
@@ -28,54 +29,141 @@ export default class SelectCategory extends Component {
         </View>
         {/* 具体类型 */}
         <View style={[styles.content]}>
-          <View style={[styles.categoryBox]}>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
+          <Swiper>
+            <View style={[styles.categoryBox]}>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
             </View>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
+            <View style={[styles.categoryBox]}>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食1</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
             </View>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
+            <View style={[styles.categoryBox]}>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食2</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
+              <View style={[styles.categoryItem]}>
+                <IconZheshang size={42}></IconZheshang>
+                <Text>饮食</Text>
+              </View>
             </View>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
-            </View>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
-            </View>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
-            </View>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
-            </View>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
-            </View>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
-            </View>
-            <View style={[styles.categoryItem]}>
-              <IconZheshang size={42}></IconZheshang>
-              <Text>饮食</Text>
-            </View>
-          </View>
+          </Swiper>
+
           {/* 下面的圆圈 */}
-          <View style={[styles.circleBox]}>
+          {/* <View style={[styles.circleBox]}>
             <View style={[styles.circleItem]}></View>
             <View style={[styles.circleItem]}></View>
             <View style={[styles.circleItem]}></View>
-          </View>
+          </View> */}
         </View>
       </View>
     );
@@ -127,6 +215,9 @@ const styles = StyleSheet.create({
   categoryBox: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    height: 160,
+    // borderColor: 'black',
+    // borderWidth: 1,
   },
   category: {},
   categoryItem: {

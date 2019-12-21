@@ -18,7 +18,6 @@ import SelectCategory from './componnet/chargeAccount/SelectCategory';
 import AllMoneyDatePick from './componnet/chargeAccount/DatePick';
 import {commonColor} from '../../style/common.js';
 
-console.log('getScreenHeight', getScreenHeight());
 import {getScreenHeight} from '../../utils/common.js';
 
 class ChargeAccount extends React.Component {
