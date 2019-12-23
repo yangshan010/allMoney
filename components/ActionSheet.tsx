@@ -6,57 +6,52 @@ import {
   Animated,
   StyleSheet,
   Text,
+  TouchableWithoutFeedback,
+  ScrollView,
 } from 'react-native';
-
-class ActionSheet extends React.Component {
+interface Props {
+  cancel: Function;
+  height: number;
+}
+class ActionSheet extends React.Component<Props> {
   translateY = 150;
   state = {
     visible: true,
-    sheetAnim: new Animated.Value(this.translateY),
+    sheetAnim: new Animated.Value(this.props.height),
   };
+  componentDidMount() {
+    this.show();
+  }
   cancel = () => {
-    console.log('123');
-    this.setState({
-      visible: false,
-    });
     Animated.timing(this.state.sheetAnim, {
-      toValue: this.translateY,
+      toValue: this.props.height,
       duration: 150,
     }).start();
+    setTimeout(() => this.props.cancel(), 150);
   };
+
   show = () => {
-    this.setState({
-      visible: true,
-    });
     Animated.timing(this.state.sheetAnim, {
       toValue: 0,
       duration: 250,
     }).start();
   };
   render() {
-    const {visible} = this.state;
     return (
-      <Modal
-        visible={visible}
-        transparent={true}
-        animationType="none"
-        onRequestClose={this.cancel}>
-        <View style={[styles.wrapper]}>
-          <TouchableOpacity
-            style={[styles.overlay]}
-            onPress={this.cancel}></TouchableOpacity>
-          <Animated.View
-            style={[
-              styles.bd,
-              {
-                height: this.translateY,
-                transform: [{translateY: this.state.sheetAnim}],
-              },
-            ]}>
-            <Text>asdfasfasfasdf</Text>
-          </Animated.View>
-        </View>
-      </Modal>
+      <View style={[styles.wrapper]}>
+        <TouchableWithoutFeedback onPress={this.cancel}>
+          <View style={[styles.overlay]}></View>
+        </TouchableWithoutFeedback>
+        <Animated.View
+          style={[
+            styles.bd,
+            {
+              transform: [{translateY: this.state.sheetAnim}],
+            },
+          ]}>
+          {this.props.children}
+        </Animated.View>
+      </View>
     );
   }
 }
@@ -67,6 +62,8 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
     // backgroundColor: 'rgba(0,0,0,0.45)',
   },
   overlay: {
@@ -81,7 +78,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     backgroundColor: '#fff',
-    width: '100%',
+    width: '98%',
+    borderRadius: 6,
   },
 });
 export default ActionSheet;

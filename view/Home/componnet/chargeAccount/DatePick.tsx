@@ -19,7 +19,7 @@ interface Props {
   cancel: Function;
 }
 export default class DatePick extends Component<Props> {
-  translateY = 240;
+  translateY = 300;
   state = {
     sheetAnim: new Animated.Value(this.translateY),
     selectDate: this.props.date,
@@ -29,7 +29,7 @@ export default class DatePick extends Component<Props> {
   }
   show = () => {
     Animated.timing(this.state.sheetAnim, {
-      toValue: -40,
+      toValue: 0,
       duration: 250,
     }).start();
   };

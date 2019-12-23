@@ -17,7 +17,7 @@ import InputAccount from './componnet/chargeAccount/InputAccount';
 import SelectCategory from './componnet/chargeAccount/SelectCategory';
 import AllMoneyDatePick from './componnet/chargeAccount/DatePick';
 import {commonColor} from '../../style/common.js';
-
+import SelectAccount from './componnet/chargeAccount/SelectAccount';
 import {getScreenHeight} from '../../utils/common.js';
 
 class ChargeAccount extends React.Component {
@@ -27,7 +27,7 @@ class ChargeAccount extends React.Component {
   translateY = 150;
   state = {
     visible: false,
-
+    showSelectAccount: false,
     date: '',
   };
   static navigationOptions = {
@@ -44,8 +44,12 @@ class ChargeAccount extends React.Component {
       visible: true,
     });
   };
+  showSelectAccount = () => {
+    this.setState({
+      showSelectAccount: !this.state.showSelectAccount,
+    });
+  };
   selectDate = (date: Date) => {
-    console.log(moment(date).format('YYYY-MM-DD'));
     this.setState({
       date,
     });
@@ -65,7 +69,8 @@ class ChargeAccount extends React.Component {
     return formatDate;
   };
   render() {
-    const {visible} = this.state;
+    const {visible, showSelectAccount} = this.state;
+    console.log('showSelectAccount,', showSelectAccount);
     return (
       <SafeAreaView>
         <ScrollView keyboardDismissMode={true} scrollEnabled={false}>
@@ -98,7 +103,8 @@ class ChargeAccount extends React.Component {
               </View>
             </View>
             {/* 金额输入 */}
-            <InputAccount></InputAccount>
+            <InputAccount
+              showSelectAccount={this.showSelectAccount}></InputAccount>
             {/* 选择消费类别 */}
             <SelectCategory></SelectCategory>
             {/* 其他信息 */}
@@ -128,7 +134,7 @@ class ChargeAccount extends React.Component {
             </View>
           </View>
         </ScrollView>
-
+        {/* 时间选择 */}
         {visible && (
           <AllMoneyDatePick
             cancel={this.cancel}
@@ -136,6 +142,10 @@ class ChargeAccount extends React.Component {
             date={
               this.state.date ? this.state.date : new Date()
             }></AllMoneyDatePick>
+        )}
+        {/* 选择账户 */}
+        {showSelectAccount && (
+          <SelectAccount cancel={this.showSelectAccount}></SelectAccount>
         )}
       </SafeAreaView>
     );

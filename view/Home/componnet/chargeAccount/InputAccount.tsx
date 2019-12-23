@@ -5,21 +5,29 @@ import {
   TouchableWithoutFeedback,
   TextInput,
   StyleSheet,
+  TouchableHighlight,
 } from 'react-native';
 import Iconjiansheyinhang from '../../../../assets/iconfont/Iconjianshe';
-class InputAccount extends React.Component {
+interface Props {
+  showSelectAccount: Function;
+}
+class InputAccount extends React.Component<Props> {
   state = {};
 
   render() {
     return (
       <View style={[styles.layout]}>
-        <View style={[styles.selectBlank]}>
-          <Iconjiansheyinhang size={42}></Iconjiansheyinhang>
-          <View style={[styles.blankContent]}>
-            <Text style={[styles.blankName]}>建设银行</Text>
-            <Text style={[styles.blackType]}>信用卡</Text>
+        <TouchableWithoutFeedback
+          onPress={() => this.props.showSelectAccount()}>
+          <View style={[styles.selectBlank]}>
+            <Iconjiansheyinhang size={42}></Iconjiansheyinhang>
+            <View style={[styles.blankContent]}>
+              <Text style={[styles.blankName]}>建设银行</Text>
+              <Text style={[styles.blackType]}>信用卡</Text>
+            </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
+
         <View style={[styles.input]}>
           <Text
             style={{
@@ -61,7 +69,9 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 20,
   },
-  blankContent: {},
+  blankContent: {
+    marginLeft: 8,
+  },
   blankName: {
     fontSize: 16,
     fontWeight: '400',
