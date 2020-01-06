@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
-import {createAppContainer, SafeAreaView} from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-
+import AuthLoadingScreen from './view/Loading/index.tsx';
 import HomeScreen from './view/Home/Home';
 
 import Iconmoney from './assets/iconfont/Iconmoney';
@@ -13,6 +13,7 @@ import AddAssets from './view/Home/AddAssets';
 import CreateCommonAccount from './view/Home/CreateCommonAccount';
 import BlankList from './view/Home/BlankList';
 import CreateBlankAccount from './view/Home/CreateBlankAccount';
+import AuthStack from './view/Login';
 const homeNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
@@ -66,7 +67,14 @@ const AppNavigator = createBottomTabNavigator(
     },
   },
 );
-const App = createAppContainer(AppNavigator);
+
+const App = createAppContainer(
+  createSwitchNavigator({
+    AuthLoading: AuthLoadingScreen,
+    App: AppNavigator,
+    Auth: AuthStack,
+  }),
+);
 const styles = StyleSheet.create({
   bigBlue: {
     flex: 1,

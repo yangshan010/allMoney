@@ -9,7 +9,20 @@ import IconZS from '../../assets/iconfont/Iconzhaoshang';
 import IconJS from '../../assets/iconfont/Iconjianshe';
 import IconPA from '../../assets/iconfont/Iconpingan';
 import {commonColor} from '../../style/common.js';
-export default class BlankList extends Component {
+interface Params {
+  type: string;
+}
+interface NavigationState {
+  params: Params;
+}
+interface Navigation {
+  navigate: Function;
+  state: NavigationState;
+}
+interface Props {
+  navigation: Navigation;
+}
+export default class BlankList extends Component<Props> {
   static navigationOptions = {
     title: '银行卡',
   };

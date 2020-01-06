@@ -7,8 +7,45 @@ import Iconvisa from '../../../../assets/iconfont/Iconvisa';
 import Iconweixin from '../../../../assets/iconfont/Iconweixin';
 import Iconyinhangqia1 from '../../../../assets/iconfont/Iconyinhangqia1';
 import Iconcash from '../../../../assets/iconfont/Iconcash';
-export default class Assets extends Component {
-  toPage = (type: string, urlName: string) => {
+
+class Animal {
+  name: string;
+
+  constructor(theName: string) {
+    this.name = theName;
+  }
+  move(distanceInMeters: number = 0) {
+    console.log(`${this.name} moved ${distanceInMeters}m.`);
+  }
+}
+
+class Snake extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+  move(distanceInMeters = 5) {
+    console.log('Slithering...');
+    super.move(distanceInMeters);
+  }
+}
+
+let sam = new Snake('Sammy the Python');
+
+sam.move();
+// tom.move(34);
+
+interface Props {
+  // [propName: string]: any;
+  navigation: any;
+}
+interface ToPageFunc {
+  (type: string, urlName: string): void;
+}
+export default class Assets extends Component<Props> {
+  constructor(props: any) {
+    super(props);
+  }
+  toPage: ToPageFunc = (type, urlName) => {
     this.props.navigation.navigate(urlName, {type});
   };
   render() {

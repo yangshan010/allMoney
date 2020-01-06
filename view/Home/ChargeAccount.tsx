@@ -19,9 +19,14 @@ import AllMoneyDatePick from './componnet/chargeAccount/DatePick';
 import {commonColor} from '../../style/common.js';
 import SelectAccount from './componnet/chargeAccount/SelectAccount';
 import {getScreenHeight} from '../../utils/common.js';
-
-class ChargeAccount extends React.Component {
-  constructor(props) {
+interface Navigation {
+  goBack: Function;
+}
+interface Props {
+  navigation: Navigation;
+}
+class ChargeAccount extends React.Component<Props> {
+  constructor(props: any) {
     super(props);
   }
   translateY = 150;
@@ -71,9 +76,10 @@ class ChargeAccount extends React.Component {
   render() {
     const {visible, showSelectAccount} = this.state;
     console.log('showSelectAccount,', showSelectAccount);
+    const {date} = this.state;
     return (
       <SafeAreaView>
-        <ScrollView keyboardDismissMode={true} scrollEnabled={false}>
+        <ScrollView keyboardDismissMode="on-drag" scrollEnabled={false}>
           <View style={[styles.layout]}>
             {/* 头部 */}
             <View style={[styles.header, styles.paddingLeft]}>
@@ -139,9 +145,7 @@ class ChargeAccount extends React.Component {
           <AllMoneyDatePick
             cancel={this.cancel}
             sendDate={this.selectDate}
-            date={
-              this.state.date ? this.state.date : new Date()
-            }></AllMoneyDatePick>
+            date={(date ? date : new Date()) as Date}></AllMoneyDatePick>
         )}
         {/* 选择账户 */}
         {showSelectAccount && (

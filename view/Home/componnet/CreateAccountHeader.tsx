@@ -8,7 +8,14 @@ import IconZS from '../../../assets/iconfont/Iconzhaoshang';
 import IconJS from '../../../assets/iconfont/Iconjianshe';
 import IconPA from '../../../assets/iconfont/Iconpingan';
 import {commonColor} from '../../../style/common.js';
-const blankMap = {
+interface Type {
+  icon: object;
+  name: string;
+}
+interface IconMap {
+  [index: string]: Type;
+}
+const blankMap: IconMap = {
   JT: {
     icon: <IconJT size={32}></IconJT>,
     name: '交通银行',

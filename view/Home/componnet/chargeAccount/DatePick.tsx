@@ -41,7 +41,7 @@ export default class DatePick extends Component<Props> {
     }).start();
     setTimeout(this.props.cancel, 300);
   };
-  setDate = (event: object, date: Date) => {
+  setDate = (date: Date) => {
     this.setState({
       selectDate: date,
     });
@@ -87,7 +87,7 @@ export default class DatePick extends Component<Props> {
           <DateTimePicker
             value={selectDate}
             timeZoneOffsetInMinutes={8 * 60}
-            onChange={this.setDate}
+            onChange={(event, date) => this.setDate(date as Date)}
             locale="zh-Hans"
             display="calendar"
             mode="date"></DateTimePicker>

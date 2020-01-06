@@ -11,7 +11,13 @@ import Iconweixin from '../../assets/iconfont/Iconweixin';
 import Iconzhifubao from '../../assets/iconfont/Iconzhifubao';
 import Iconcash from '../../assets/iconfont/Iconcash';
 import {commonColor} from '../../style/common.js';
-const iconMap = {
+interface Type {
+  [index: string]: object | string;
+}
+interface IconMap {
+  [index: string]: Type;
+}
+const iconMap: IconMap = {
   zhifubao: {
     icon: <Iconzhifubao size={32}></Iconzhifubao>,
     name: '支付宝',
@@ -25,12 +31,15 @@ const iconMap = {
     name: '现金',
   },
 };
-export default class CreateCommonAccount extends Component {
+interface Props {
+  navigation: any;
+}
+export default class CreateCommonAccount extends Component<Props> {
   static navigationOptions = {
     title: '添加账户',
   };
   render() {
-    const {type} = this.props.navigation.state.params;
+    const {type}: any = this.props.navigation.state.params;
     console.log('this.props', this.props);
     return (
       <View style={[styles.layout]}>

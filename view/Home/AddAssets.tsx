@@ -2,7 +2,10 @@ import React from 'react';
 import {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Assets from './componnet/addAssets/Assets';
-export default class AddAssets extends Component {
+interface Props {
+  navigation: object;
+}
+export default class AddAssets extends Component<Props> {
   static navigationOptions = {
     title: '添加资产',
   };
@@ -11,7 +14,7 @@ export default class AddAssets extends Component {
     return (
       <View style={[styles.layout]}>
         {/* 头部选择卡 */}
-        <View style={[styles.header, styles.paddingLeft]}>
+        <View style={[styles.header]}>
           <View style={[styles.headerOption]}>
             <View
               style={[styles.headerOptionLeft, styles.headerOptionSelected]}>
@@ -32,7 +35,7 @@ export default class AddAssets extends Component {
           </View>
         </View>
         {/* 列表   */}
-        <Assets {...this.props}></Assets>
+        <Assets navigation={this.props.navigation}></Assets>
       </View>
     );
   }

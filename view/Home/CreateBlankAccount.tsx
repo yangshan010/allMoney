@@ -10,7 +10,20 @@ import {
 import {commonColor} from '../../style/common.js';
 import Balance from '../../components/Balance';
 import CreateAccountHeader from './componnet/CreateAccountHeader';
-export default class CreateBlankAccount extends Component {
+interface Params {
+  blank: string;
+  type: string;
+}
+interface params {
+  params: Params;
+}
+interface navigation {
+  state: params;
+}
+interface Props {
+  navigation: navigation;
+}
+export default class CreateBlankAccount extends Component<Props> {
   static navigationOptions = {
     title: '新建账户',
   };

@@ -1,27 +1,33 @@
 import React from 'react';
 import {PanResponder} from 'react-native';
 import IconMyIconIsvisible from '../../assets/iconfont/IconMyIconIsvisible';
-import {
-  View,
-  Text,
-  Button,
-  StatusBar,
-  StyleSheet,
-  Animated,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, Animated, TouchableOpacity} from 'react-native';
 import AssetsAccount from './componnet/AssetsAccount';
 import {getScreenWidth, countFormat} from '../../utils/common.js';
 import Icongouduijilu from '../../assets/iconfont/Icongouduijilu';
 import LinearGradient from 'react-native-linear-gradient';
+interface navigate {
+  navigate: Function;
+}
+interface Props {
+  navigation: navigate;
+}
 
-class HomeScreen extends React.Component {
+interface State {
+  headerStep: number;
+}
+class HomeScreen extends React.Component<Props, State> {
   static navigationOptions = {
     title: '',
     headerStyle: {
       backgroundColor: 'rgb(58,149,254)',
     },
   };
+  loggingIdentity<T>(arg: T[]): T[] {
+    console.log(arg.length); // Error: T doesn't have .length
+    return arg;
+  }
+
   state = {
     move: 0,
     screenWidth: getScreenWidth(),
@@ -38,26 +44,13 @@ class HomeScreen extends React.Component {
     onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
 
     onPanResponderGrant: (evt, gestureState) => {
-      // 开始手势操作。给用户一些视觉反馈，让他们知道发生了什么事情！
-      // gestureState.{x,y} 现在会被设置为0
-      // console.log('开始====》', evt.nativeEvent, gestureState.x0);
       this.startLocationX = evt.nativeEvent.locationX;
     },
     onPanResponderMove: (evt, gs) => {
-      // 最近一次的移动距离为gestureState.move{X,Y}
-      // 从成为响应者开始时的累计手势移动距离为gestureState.d{x,y}
-      // console.log('移动', evt.nativeEvent.locationX, gestureState);
       const moveValue = evt.nativeEvent.locationX - this.startLocationX;
-      // this.setState({
-      //   move: gs.dx,
-      // });
+
       console.log(this.state.sheetAnim._value);
-      // if (this.state.sheetAnim._value < 0) {
-      //   Animated.timing(this.state.sheetAnim, {
-      //     toValue: moveValue,
-      //     duration: 0,
-      //   }).start();
-      // } else {
+
       Animated.timing(this.state.sheetAnim, {
         toValue: this.state.sheetAnim._value + moveValue,
         duration: 0,
@@ -66,9 +59,6 @@ class HomeScreen extends React.Component {
     },
     onPanResponderTerminationRequest: (evt, gestureState) => true,
     onPanResponderRelease: (evt, gestureState) => {
-      // console.log('结束====》', evt.nativeEvent, gestureState.x0);
-      // 用户放开了所有的触摸点，且此时视图已经成为了响应者。
-      // 一般来说这意味着一个手势操作已经成功完成。
       const {screenWidth} = this.state;
       let {headerStep} = this.state;
       console.log(gestureState.dx);
@@ -93,13 +83,8 @@ class HomeScreen extends React.Component {
         headerStep,
       });
     },
-    onPanResponderTerminate: (evt, gestureState) => {
-      // console.log('开始', evt);
-      // 另一个组件已经成为了新的响应者，所以当前手势将被取消。
-    },
+    onPanResponderTerminate: (evt, gestureState) => {},
     onShouldBlockNativeResponder: (evt, gestureState) => {
-      // 返回一个布尔值，决定当前组件是否应该阻止原生组件成为JS响应者
-      // 默认返回true。目前暂时只支持android。
       return true;
     },
   });
@@ -111,7 +96,6 @@ class HomeScreen extends React.Component {
   render() {
     const {headerStep} = this.state;
     return (
-      // <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View>
         {/* 头部 */}
         <View
@@ -200,11 +184,7 @@ class HomeScreen extends React.Component {
   }
 }
 const styles = StyleSheet.create({
-  border: {
-    // borderColor: 'black',
-    // borderTopWidth: 1,
-    // borderWidth: 1,
-  },
+  border: {},
   title: {
     marginBottom: 10,
     color: '#eee',
@@ -296,7 +276,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    // textAlign:'center'
   },
   dotItem: {
     height: 5,
